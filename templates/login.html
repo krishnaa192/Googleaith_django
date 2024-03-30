@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+       
+    }
+    .login-main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; 
+        height: 100vh;
+        width: 100vw;
+        background-color: #d1deec;
+        border: 1px solid #d1deec;
+    }
+    a{
+        color: white;
+        text-decoration: none;
+    }
+
+
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .siginform{
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    form {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: auto;
+    }
+
+    input {
+        width: 300px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    p {
+        color: red;
+        text-align: center;
+    }
+    label{
+        margin:auto;
+        font-size: 14px;
+
+    }
+
+
+    button {
+        display: block;
+        margin: 50px auto;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+    .google{
+        text-align: center;
+    }
+    .google button{
+        background-color: #db4437;
+        width: 200px;
+          margin-top: 2rem;
+    ;
+    }
+    .twitter{
+        text-align: center;
+        
+    }
+    .twitter button{
+        background-color: #1da1f2;
+        width: 200px;
+        margin-top: -2rem;
+   
+    }
+    .meta{
+        text-align: center;
+        
+    }
+    .meta button{
+        background-color: #3b5998;
+        width: 200px;
+        margin-top: -3rem;
+    
+    }
+</style>
+<body>
+<div class="login-main">
+    {% load  socialaccount %}
+    <h1>
+        Login
+    </h1>
+<div class="siginform">
+    <form action="" method="post">
+        {% csrf_token %}
+     <label for="username">Username</label>   
+        <input type="text" name="username" placeholder="username" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Login">
+    </form>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+    </form>
+</div>
+
+    <div class="google">
+        <button>
+
+            <a href="{% provider_login_url 'google'%}?next=/">Login with google</a>
+        </button>
+        </div>
+        <div class="twitter">
+        <button>
+
+            <a href="{% provider_login_url 'google'%}?next=/">Login with X</a>
+        </button>
+        </div>
+        <div class="meta">
+        <button>
+
+            <a href="{% provider_login_url 'google'%}?next=/">Login with Facebook</a>
+        </button>
+    </div>
+  
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   
+</head>
+<body>
+    <div class="container">
+        {% if user.is_authenticated %}
+            <div class="user-card">
+                <h1>Welcome, {{ user.username }}</h1>
+    
+                <img src="{{account.picture.url }}" alt="Profile Picture">
+            
+                <p>Email: {{ user.email }}</p>
+                <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+            </div>
+            <h2>Chat with your friends</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
